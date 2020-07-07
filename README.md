@@ -1,5 +1,5 @@
 # Bots
-NOTE: MUST UPDATE HTML AND CSS LABEL CAUSE THEY CHANGE EVERY FEW MONTH
+NOTE: MUST UPDATE HTML AND CSS LABEL BECAUSE THEY CHANGE EVERY FEW MONTH
 
 whatappsender - The bot send msg to contact from excel name contact, the excel must contain name column
 
