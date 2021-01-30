@@ -9,7 +9,7 @@ import xlsxwriter
 
 
 options = FirefoxOptions()
-driver = webdriver.Firefox(options=options, executable_path="C:\webdrivers\geckodriver.exe")
+driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
 driver.get('https://www.messenger.com/')
 email = input('Enter your email: ')
 password = input('Enter your password: ')
@@ -61,11 +61,13 @@ for link in link_list[0:5]:
     driver.get(profile_link)
 
     try:
-        msg_box = driver.find_element_by_xpath('//div[@aria-label="Type a message..."]')
+        sleep(3)
+        msg_box = driver.find_element_by_xpath('//div[@class="notranslate _5rpu"]')
+      #  msg_box = driver.find_element_by_id("placeholder-ci3ur")
         for line in msg:  # create in order to send multi line message
             ActionChains(driver).key_down(Keys.SHIFT).send_keys(Keys.ENTER).key_up(Keys.SHIFT).perform()
             msg_box.send_keys(line)
-       # msg_box.send_keys(Keys.ENTER)
+        msg_box.send_keys(Keys.ENTER)
         sheet.write(i, 0, (name_list[(i-1)]))
         sheet.write(i, 1, link)
         sheet.write(i, 2, 'Succeed')
@@ -75,6 +77,7 @@ for link in link_list[0:5]:
         sheet.write(i, 1, link)
         sheet.write(i, 2, 'Failed')
         sleep(randint(4, 16))
+
     i += 1
 
 
